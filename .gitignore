@@ -4,7 +4,9 @@ AllAouters.tsx
 /node_modules
 /.pnp
 .pnp.js
-
+pnpm-global/**
+pnpm-global
+**/pnpm-global
 # testing
 /coverage
 **/coverage
