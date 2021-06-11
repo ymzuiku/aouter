@@ -1,0 +1,39 @@
+{
+  "name": "aouter",
+  "version": "0.1.1",
+  "main": "es/index.js",
+  "types": "lib/index.ts",
+  "exports": {
+    "./watch": "./watch.js",
+    "./allAouters": "./AllAouters.tsx",
+    ".": "./lib/index.ts"
+  },
+  "private": false,
+  "scripts": {
+    "es": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=es --target=es6  --bundle --external:vanilla-ob --external:react --external:wouter --external:querystring-number --format=esm --minify --splitting",
+    "esm": "esbuild --define:process.env.NODE_ENV=\\\"production\\\" lib/index.ts --outdir=esm --target=es6  --bundle --format=esm --minify --splitting"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.2",
+    "@types/react": "^17.0.11",
+    "fs-extra": "^9.1.0",
+    "rollup": "^1.24.0",
+    "rollup-plugin-typescript2": "^0.24.3",
+    "rollup-plugin-uglify": "^6.0.3",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ymzuiku/aouter.git"
+  },
+  "bugs": {
+    "url": "git+https://github.com/ymzuiku/aouter.git"
+  },
+  "homepage": "git+https://github.com/ymzuiku/aouter.git",
+  "dependencies": {
+    "querystring-number": "^1.0.8",
+    "react": "^17.0.2",
+    "wouter": "^2.7.4"
+  }
+}
