@@ -6,7 +6,7 @@ import qs from "querystring-number";
 const _history = [] as { url: string; top: number }[];
 export const lazyCache = {} as { [key: string]: any };
 
-export const useAoute = () => {
+export const useRoute = () => {
   const [localtion, setLocaltion] = useLocation();
   const params = useRef({});
 
@@ -18,9 +18,16 @@ export const useAoute = () => {
     localtion,
     params: params.current,
     prefetch: (url: string) => {
-      const lazy = lazyCache[url];
-      if (lazy) {
-        lazy.fn();
+      // const setComp = lazyCache[url];
+      // if (setComp) {
+      //   setComp();
+      // }
+      const last = lazyCache[url];
+      if (last && !last.loading) {
+        last.loading = true;
+        last.fn().then((e: any) => {
+          last.Comp = e.default;
+        });
       }
     },
     replace: (url: string, params?: any) => {

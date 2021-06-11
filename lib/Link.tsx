@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { aouterConfig } from "./config";
-import { useAoute } from "./useAoute";
+import { useRoute } from "./useRoute";
 
 export interface LinkExpProps {
   href: string;
@@ -27,7 +27,7 @@ export const Link: FC = ({
   if (prefetch === void 0) {
     prefetch = aouterConfig.basePrefetchTime;
   }
-  const route = useAoute();
+  const route = useRoute();
   function atMouseEnter(e: any) {
     if (onMouseEnter) {
       onMouseEnter(e);

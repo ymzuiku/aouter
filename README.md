@@ -34,3 +34,44 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
+
+`Pages/index.tsx` :
+
+```tsx
+import { Link } from "aouter";
+
+export default () => {
+  return (
+    <div>
+      <h2>hello page</h2>
+      <Link href="back">Go back</Link>
+      <Link prefetch={500} href="/user" params={{ age: 50 }}>
+        Go to user
+      </Link>
+    </div>
+  );
+};
+```
+
+Hooks `useRoute`:
+
+```tsx
+import { useRoute } from "aouter";
+
+export default () => {
+  const route = useRoute();
+  function handleGoPage() {
+    route.push("/user", { age: 50 });
+    // Other api:
+    // route.replace("/user", { age: 50 });
+    // route.back()
+    // route.prefetch("/user")
+  }
+  return (
+    <div>
+      <h2>hello page</h2>
+      <button onClick={handleGoPage}>go page</button>
+    </div>
+  );
+};
+```
