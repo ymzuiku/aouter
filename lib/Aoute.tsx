@@ -13,16 +13,19 @@ type FC = React.FC<LazyRouteProps>;
 const Loading = <div style={{ all: "unset" }} />;
 
 export const Aoute: FC = ({ path, component, loading }) => {
-  let Comp = lazyCache[path];
-  if (!Comp) {
-    lazyCache[path] = lazy(component);
-    Comp = lazyCache[path];
+  let last = lazyCache[path];
+  if (!last) {
+    lazyCache[path] = {
+      fn: component,
+      Comp: lazy(component),
+    };
+    last = lazyCache[path];
   }
 
   return (
     <Woute path={path}>
       <Suspense fallback={Loading}>
-        <Comp />
+        <last.Comp />
       </Suspense>
     </Woute>
   );

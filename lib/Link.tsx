@@ -51,7 +51,7 @@ export const Link: FC = ({
   }
 
   useEffect(() => {
-    if (prefetch > 0) {
+    if (prefetch && prefetch > 0) {
       setTimeout(() => {
         route.prefetch(href);
       }, prefetch);

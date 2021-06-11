@@ -18,9 +18,9 @@ export const useAoute = () => {
     localtion,
     params: params.current,
     prefetch: (url: string) => {
-      const importFn = lazyCache[url];
-      if (importFn) {
-        importFn();
+      const lazy = lazyCache[url];
+      if (lazy) {
+        lazy.fn();
       }
     },
     replace: (url: string, params?: any) => {
