@@ -2,6 +2,8 @@
 
 aouter = Auto Router
 
+> Gzip size 0.8kb
+
 基于 wouter，一个类似于 NextJS 的约定路由方案，通过脚本编译路由文件，适用于 SPA
 
 ## In vate

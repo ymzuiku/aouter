@@ -4,22 +4,16 @@ import { useAoute } from "./useAoute";
 
 export interface LinkExpProps {
   href: string;
-  as?: string;
   prefetch?: number;
   replace?: boolean;
-  scroll?: boolean;
-  shallow?: boolean;
-  passHref?: boolean;
-  locale?: string | false;
+  params?: any;
 }
 
 type FC = React.FC<React.HTMLProps<HTMLButtonElement> & LinkExpProps>;
 
 export const Link: FC = ({
   href,
-  as,
-  locale,
-  scroll,
+  params,
   replace,
   onMouseEnter,
   onClick,
@@ -27,9 +21,12 @@ export const Link: FC = ({
   onMouseUp,
   type,
   className,
-  prefetch = aouterConfig.basePrefetchTime,
+  prefetch,
   ...rest
 }) => {
+  if (prefetch === void 0) {
+    prefetch = aouterConfig.basePrefetchTime;
+  }
   const route = useAoute();
   function atMouseEnter(e: any) {
     if (onMouseEnter) {
@@ -45,12 +42,16 @@ export const Link: FC = ({
     if (href === "back") {
       route.back();
     } else {
-      route.push(href);
+      if (replace) {
+        route.replace(href, params);
+      } else {
+        route.push(href, params);
+      }
     }
   }
 
   useEffect(() => {
-    if (aouterConfig.autoPrefetch && prefetch > 0) {
+    if (prefetch > 0) {
       setTimeout(() => {
         route.prefetch(href);
       }, prefetch);
