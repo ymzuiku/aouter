@@ -12,8 +12,8 @@ Add watch at `vite.config.ts`
 import aouterWatch from "aouter/watch";
 
 aouterWatch({
-  routes: "client/pages",
-  src: "client",
+  routes: "src/pages",
+  src: "src",
   watch: process.env.NODE_ENV !== "production",
 });
 ```

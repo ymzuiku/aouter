@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { config } from "./config";
+import React, { useEffect } from "react";
+import { aouterConfig } from "./config";
 import { useAoute } from "./useAoute";
 
 export interface LinkExpProps {
@@ -27,7 +27,7 @@ export const Link: FC = ({
   onMouseUp,
   type,
   className,
-  prefetch = config.basePrefetchTime,
+  prefetch = aouterConfig.basePrefetchTime,
   ...rest
 }) => {
   const route = useAoute();
@@ -50,7 +50,7 @@ export const Link: FC = ({
   }
 
   useEffect(() => {
-    if (config.autoPrefetch && prefetch > 0) {
+    if (aouterConfig.autoPrefetch && prefetch > 0) {
       setTimeout(() => {
         route.prefetch(href);
       }, prefetch);

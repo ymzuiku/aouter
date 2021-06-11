@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import { lazyCache } from "./useAoute";
 import { Route as Woute } from "wouter";
 

@@ -1,5 +1,5 @@
 import { useLocation } from "wouter";
-import { config } from "./config";
+import { aouterConfig } from "./config";
 import { useRef, useLayoutEffect } from "react";
 import qs from "querystring-number";
 
@@ -40,7 +40,7 @@ export const useAoute = () => {
         url += "?" + qs.stringify(params);
       }
       _history.push({ url, top: window.scrollY });
-      if (config.onlyUseReplace) {
+      if (aouterConfig.onlyUseReplace) {
         setLocaltion(url, { replace: true });
       } else {
         setLocaltion(url, { replace: false });
@@ -52,7 +52,7 @@ export const useAoute = () => {
       }
       _history.pop();
       const last = _history.pop() || { top: 0, url: "/" };
-      if (config.onlyUseReplace) {
+      if (aouterConfig.onlyUseReplace) {
         setLocaltion(last.url, { replace: true });
         setTimeout(() => {
           window.scrollTo({ top: last.top });
